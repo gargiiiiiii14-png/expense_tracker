@@ -100,35 +100,8 @@ streamlit run app.py
 
 ---
 
-## 📷 Screenshots
 
-### Expense Entry
 
-*(Add Screenshot Here)*
-
-### Expense Table
-
-*(Add Screenshot Here)*
-
-### Expense Visualization
-
-*(Add Screenshot Here)*
-
----
-
-## 🔮 Future Improvements
-
-- Monthly budget tracking
-- Income management
-- Balance calculation
-- Pie chart and trend analysis
-- Expense filtering by date
-- Search functionality
-- User authentication
-- Cloud database integration
-- Export reports to Excel/PDF
-
----
 
 ## 💡 Skills Demonstrated
 
