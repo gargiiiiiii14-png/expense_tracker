@@ -148,8 +148,6 @@ streamlit run app.py
 
 GitHub: https://github.com/gargiiiiiii14-png
 
-LinkedIn: *(Add your LinkedIn profile link)*
 
----
 
-⭐ If you found this project useful, consider giving it a star.
+
