@@ -336,6 +336,49 @@ else:
     st.info(
         f"💡 ₹ {remaining_goal:,.0f} left to reach your goal."
     )
+
+# ---------------------------------------------------
+# SMART INSIGHTS
+# ---------------------------------------------------
+
+st.markdown("## 🧠 Smart Financial Insights")
+
+if not st.session_state.expense.empty:
+
+    category_total = (
+        st.session_state.expense
+        .groupby("Category")["Amount"]
+        .sum()
+        .sort_values(ascending=False)
+    )
+
+    top_category = category_total.index[0]
+    top_amount = category_total.iloc[0]
+
+    top_percent = (top_amount / total_expense) * 100
+
+    st.info(
+        f"💡 **{top_category}** accounts for **{top_percent:.1f}%** of your total spending."
+    )
+
+    if usage > 80:
+        st.warning("⚠️ You have used more than 80% of your monthly budget.")
+
+    elif usage > 50:
+        st.info("📊 You have crossed 50% of your monthly budget.")
+
+    else:
+        st.success("✅ Your spending is well within your budget.")
+
+    if current_savings < goal:
+        st.info(
+            f"🎯 Save **₹ {goal-current_savings:,.0f}** more to reach your savings goal."
+        )
+
+    else:
+        st.success("🎉 You have achieved your savings goal!")
+
+
     
 
 with st.sidebar:
