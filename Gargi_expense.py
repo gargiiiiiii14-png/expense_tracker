@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import plotly.express as px
 
 st.set_page_config(
     page_title="Expense Tracker",
@@ -324,12 +325,213 @@ if st.session_state.expense.empty:
 
 else:
 
-    st.dataframe(
-        st.session_state.expense,
-        use_container_width=True,
-        hide_index=True
+   styled_df = (
+    st.session_state.expense.style
+    .set_table_styles([
+        {
+            "selector": "th",
+            "props": [
+                ("background-color", "#1E293B"),
+                ("color", "white"),
+                ("font-weight", "bold"),
+                ("text-align", "center"),
+            ]
+        },
+        {
+            "selector": "td",
+            "props": [
+                ("text-align", "center"),
+                ("padding", "10px"),
+            ]
+        }
+    ])
+    .apply(
+    lambda row: [
+        "background-color: #3B1F2B" if row.name % 2 == 0
+        else "background-color: #4A2636"
+    ] * len(row),
+    axis=1
+)
+)
+
+st.dataframe(
+    styled_df,
+    use_container_width=True,
+    hide_index=True
+)
+# ---------------------------------------------------
+# EXPENSE ANALYTICS
+# ---------------------------------------------------
+
+st.markdown("<br>", unsafe_allow_html=True)
+
+st.markdown("""
+<div style="
+background:#1E293B;
+padding:20px;
+border-radius:15px;
+margin-top:20px;
+margin-bottom:20px;
+">
+
+<h2 style="color:white;margin:0;">
+📊 Expense Analytics
+</h2>
+
+</div>
+""", unsafe_allow_html=True)
+
+if st.session_state.expense.empty:
+
+    st.info("Add some expenses to see analytics.")
+
+else:
+
+    expense_df = st.session_state.expense.copy()
+
+    expense_df["Date"] = pd.to_datetime(expense_df["Date"])
+
+    # ------------------------------------
+    # PIE + BAR
+    # ------------------------------------
+
+    left, right = st.columns(2)
+
+    with left:
+
+        pie_data = (
+            expense_df
+            .groupby("Category")["Amount"]
+            .sum()
+            .reset_index()
+        )
+
+        pie_fig = px.pie(
+
+            pie_data,
+
+            values="Amount",
+
+            names="Category",
+
+            hole=0.55,
+
+            title="Category Distribution",
+
+            color_discrete_sequence=px.colors.qualitative.Set2
+
+        )
+
+        pie_fig.update_layout(
+
+            template="plotly_dark",
+
+            paper_bgcolor="#0F172A",
+
+            plot_bgcolor="#0F172A",
+
+            font_color="white",
+
+            title_x=0.25
+
+        )
+
+        st.plotly_chart(
+            pie_fig,
+            use_container_width=True
+        )
+
+    with right:
+
+        bar_data = (
+            expense_df
+            .groupby("Category")["Amount"]
+            .sum()
+            .reset_index()
+        )
+
+        bar_fig = px.bar(
+
+            bar_data,
+
+            x="Category",
+
+            y="Amount",
+
+            color="Category",
+
+            title="Spending by Category",
+
+            color_discrete_sequence=px.colors.qualitative.Set2
+
+        )
+
+        bar_fig.update_layout(
+
+            template="plotly_dark",
+
+            paper_bgcolor="#0F172A",
+
+            plot_bgcolor="#0F172A",
+
+            font_color="white",
+
+            showlegend=False
+
+        )
+
+        st.plotly_chart(
+            bar_fig,
+            use_container_width=True
+        )
+
+    # ------------------------------------
+    # LINE CHART
+    # ------------------------------------
+
+    line_data = (
+        expense_df
+        .groupby("Date")["Amount"]
+        .sum()
+        .reset_index()
     )
 
-st.header('Visualization')
-if st.button('Vizualize Expense'):
-    vizualize_expense()
+    line_fig = px.line(
+
+        line_data,
+
+        x="Date",
+
+        y="Amount",
+
+        markers=True,
+
+        title="Expense Trend"
+
+    )
+
+    line_fig.update_traces(
+
+        line=dict(width=3)
+
+    )
+
+    line_fig.update_layout(
+
+        template="plotly_dark",
+
+        paper_bgcolor="#0F172A",
+
+        plot_bgcolor="#0F172A",
+
+        font_color="white"
+
+    )
+
+    st.plotly_chart(
+
+        line_fig,
+
+        use_container_width=True
+
+    )
