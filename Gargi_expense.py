@@ -378,6 +378,78 @@ if not st.session_state.expense.empty:
     else:
         st.success("🎉 You have achieved your savings goal!")
 
+# ---------------------------------------------------
+# ACHIEVEMENT BADGES
+# ---------------------------------------------------
+
+st.markdown("## 🏆 Achievement Badges")
+
+badges = []
+
+# First Expense
+if total_transactions >= 1:
+    badges.append(("🥇", "First Expense"))
+
+# Expense Master
+if total_transactions >= 25:
+    badges.append(("📒", "Expense Master"))
+
+# Budget Champion
+if usage <= 80 and total_transactions > 0:
+    badges.append(("💰", "Budget Champion"))
+
+# Savings Hero
+if current_savings >= goal:
+    badges.append(("🎯", "Savings Hero"))
+
+# Consistent Saver
+if remaining > budget * 0.30:
+    badges.append(("🌱", "Consistent Saver"))
+
+# Food Lover
+if not st.session_state.expense.empty:
+
+    top_category = (
+        st.session_state.expense
+        .groupby("Category")["Amount"]
+        .sum()
+        .idxmax()
+    )
+
+    if top_category == "Food":
+        badges.append(("🍔", "Food Lover"))
+
+cols = st.columns(3)
+
+for i, (emoji, badge) in enumerate(badges):
+
+    with cols[i % 3]:
+
+        st.markdown(f"""
+        <div style="
+        background:#1E293B;
+        border:1px solid #334155;
+        border-radius:18px;
+        padding:20px;
+        text-align:center;
+        margin-bottom:15px;
+        transition:0.3s;
+        ">
+
+        <div style="font-size:42px;">
+        {emoji}
+        </div>
+
+        <h4 style="
+        color:white;
+        margin-top:10px;
+        ">
+        {badge}
+        </h4>
+
+        </div>
+        """, unsafe_allow_html=True)
+
 
     
 
