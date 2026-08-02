@@ -3,7 +3,11 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-
+st.set_page_config(
+    page_title="Expense Tracker",
+    page_icon="💰",
+    layout="wide"
+)
 if 'expense' not in st.session_state:
     st.session_state.expense = pd.DataFrame(columns=['Date', 'Category', 'Amount', 'Description'])
 
