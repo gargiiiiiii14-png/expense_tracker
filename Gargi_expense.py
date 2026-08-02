@@ -753,64 +753,99 @@ else:
         use_container_width=True
 
     )
-# ---------------------------------------------------
-# PREMIUM FOOTER
-# ---------------------------------------------------
-
-st.markdown("<br><br>", unsafe_allow_html=True)
-
 st.markdown("""
-<div style="
-background:#111827;
-padding:30px;
-border-radius:18px;
-margin-top:40px;
-text-align:center;
-border-top:3px solid #22C55E;
-">
+<hr style="border:1px solid #334155; margin-top:50px;">
 
-<h2 style="
-color:white;
-margin-bottom:8px;
-">
+<div style="text-align:center; padding:25px;">
+
+<h2 style="color:white; margin-bottom:10px;">
 💰 Personal Expense Tracker
 </h2>
 
-<p style="
-color:#CBD5E1;
-font-size:16px;
-margin-bottom:18px;
+<p style="color:#CBD5E1; font-size:17px;">
+Built with ❤️ using <b>Python, Streamlit, Pandas & Plotly</b>
+</p>
+
+<div style="
+display:flex;
+justify-content:center;
+gap:15px;
+margin:30px 0;
+flex-wrap:wrap;
 ">
-Track • Analyze • Save Smarter
+
+<span style="
+background:#1E293B;
+padding:12px 24px;
+border-radius:30px;
+color:white;
+font-weight:600;
+">
+🐍 Python
+</span>
+
+<span style="
+background:#1E293B;
+padding:12px 24px;
+border-radius:30px;
+color:white;
+font-weight:600;
+">
+📊 Pandas
+</span>
+
+<span style="
+background:#1E293B;
+padding:12px 24px;
+border-radius:30px;
+color:white;
+font-weight:600;
+">
+📈 Plotly
+</span>
+
+<span style="
+background:#1E293B;
+padding:12px 24px;
+border-radius:30px;
+color:white;
+font-weight:600;
+">
+🎨 Streamlit
+</span>
+
+</div>
+
+<p style="margin-top:20px;">
+<a href="https://github.com/gargiiiiiii14-png"
+target="_blank"
+style="
+text-decoration:none;
+color:#3B82F6;
+font-weight:bold;
+margin-right:30px;
+">
+💻 GitHub
+</a>
+
+<a href="https://www.linkedin.com/in/gargi-rakshit-634047292/"
+target="_blank"
+style="
+text-decoration:none;
+color:#3B82F6;
+font-weight:bold;
+">
+💼 LinkedIn
+</a>
 </p>
 
 <p style="
+margin-top:25px;
 color:#94A3B8;
-font-size:15px;
+font-size:14px;
 ">
-Built using <b>Python, Streamlit, Pandas, Plotly & Seaborn</b>
-</p>
-
-<p style="
-color:#94A3B8;
-font-size:15px;
-margin-top:10px;
-">
-Designed & Developed by <b>Gargi Rakshit</b>
+© 2026 Gargi Rakshit
 </p>
 
 </div>
 """, unsafe_allow_html=True)
-
-col1, col2, col3 = st.columns([1, 1, 1])
-
-with col2:
-    st.link_button(
-        "💼 LinkedIn",
-        "https://www.linkedin.com/in/gargi-rakshit-634047292/"
-    )
-
-    st.link_button(
-        "💻 GitHub",
-        "https://github.com/gargiiiiiii14-png"
-    )
