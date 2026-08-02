@@ -292,6 +292,52 @@ else:
 
     st.error("🚨 Budget exceeded!")
 
+# ---------------------------------------------------
+# SAVINGS GOAL
+# ---------------------------------------------------
+
+st.markdown("## 🎯 Savings Goal")
+
+goal = st.number_input(
+    "Set Savings Goal",
+    min_value=1000,
+    value=50000,
+    step=1000
+)
+
+current_savings = max(remaining, 0)
+
+goal_progress = (current_savings / goal) * 100 if goal > 0 else 0
+
+g1, g2 = st.columns(2)
+
+with g1:
+    st.metric(
+        "🎯 Goal",
+        f"₹ {goal:,.0f}"
+    )
+
+with g2:
+    st.metric(
+        "💰 Current Savings",
+        f"₹ {current_savings:,.0f}"
+    )
+
+st.progress(min(goal_progress / 100, 1.0))
+
+remaining_goal = max(goal - current_savings, 0)
+
+if current_savings >= goal:
+
+    st.success("🎉 Congratulations! You've reached your savings goal!")
+
+else:
+
+    st.info(
+        f"💡 ₹ {remaining_goal:,.0f} left to reach your goal."
+    )
+    
+
 with st.sidebar:
 
     st.markdown("## 💰 Expense Tracker")
