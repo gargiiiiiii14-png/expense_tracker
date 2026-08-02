@@ -235,6 +235,63 @@ with c4:
 
 st.markdown("<br>", unsafe_allow_html=True)
 
+# ---------------------------------------------------
+# BUDGET TRACKER
+# ---------------------------------------------------
+
+st.markdown("## 💰 Monthly Budget")
+
+budget = st.number_input(
+    "Set Monthly Budget",
+    min_value=1000,
+    value=30000,
+    step=1000
+)
+
+spent = total_expense
+
+remaining = budget - spent
+
+usage = (spent / budget) * 100 if budget > 0 else 0
+
+b1, b2, b3 = st.columns(3)
+
+with b1:
+    st.metric(
+        "Budget",
+        f"₹ {budget:,.0f}"
+    )
+
+with b2:
+    st.metric(
+        "Spent",
+        f"₹ {spent:,.0f}"
+    )
+
+with b3:
+    st.metric(
+        "Remaining",
+        f"₹ {remaining:,.0f}"
+    )
+
+st.progress(min(usage / 100, 1.0))
+
+if usage < 50:
+
+    st.success("✅ You're managing your expenses well.")
+
+elif usage < 80:
+
+    st.info("ℹ You've used more than half of your budget.")
+
+elif usage <= 100:
+
+    st.warning("⚠ You're close to your monthly budget.")
+
+else:
+
+    st.error("🚨 Budget exceeded!")
+
 with st.sidebar:
 
     st.markdown("## 💰 Expense Tracker")
