@@ -753,3 +753,64 @@ else:
         use_container_width=True
 
     )
+# ---------------------------------------------------
+# PREMIUM FOOTER
+# ---------------------------------------------------
+
+st.markdown("<br><br>", unsafe_allow_html=True)
+
+st.markdown("""
+<div style="
+background:#111827;
+padding:30px;
+border-radius:18px;
+margin-top:40px;
+text-align:center;
+border-top:3px solid #22C55E;
+">
+
+<h2 style="
+color:white;
+margin-bottom:8px;
+">
+💰 Personal Expense Tracker
+</h2>
+
+<p style="
+color:#CBD5E1;
+font-size:16px;
+margin-bottom:18px;
+">
+Track • Analyze • Save Smarter
+</p>
+
+<p style="
+color:#94A3B8;
+font-size:15px;
+">
+Built using <b>Python, Streamlit, Pandas, Plotly & Seaborn</b>
+</p>
+
+<p style="
+color:#94A3B8;
+font-size:15px;
+margin-top:10px;
+">
+Designed & Developed by <b>Gargi Rakshit</b>
+</p>
+
+</div>
+""", unsafe_allow_html=True)
+
+col1, col2, col3 = st.columns([1, 1, 1])
+
+with col2:
+    st.link_button(
+        "💼 LinkedIn",
+        "https://www.linkedin.com/in/gargi-rakshit-634047292/"
+    )
+
+    st.link_button(
+        "💻 GitHub",
+        "https://github.com/gargiiiiiii14-png"
+    )
