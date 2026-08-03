@@ -41,87 +41,113 @@ def vizualize_expense():
 st.markdown("""
 <style>
 
+/* -----------------------------
+Main App
+------------------------------*/
+
+.stApp{
+    background:#0F172A;
+}
+
+/* -----------------------------
+Metric Cards
+------------------------------*/
+
 div[data-testid="metric-container"]{
     background:#1E293B;
     border:1px solid #334155;
+    border-radius:18px;
     padding:18px;
-    border-radius:16px;
     transition:0.3s;
 }
 
 div[data-testid="metric-container"]:hover{
-    transform:translateY(-4px);
-    border:1px solid #22C55E;
-    box-shadow:0 8px 20px rgba(34,197,94,0.25);
+    transform:translateY(-5px);
+    border:1px solid #E11D48;
+    box-shadow:0 12px 28px rgba(225,29,72,0.25);
 }
+
+/* -----------------------------
+Sidebar
+------------------------------*/
 
 section[data-testid="stSidebar"]{
     background:#111827;
+    border-right:1px solid #334155;
 }
 
+/* Sidebar Buttons */
+
 section[data-testid="stSidebar"] .stButton > button{
-    background:#22C55E;
+    background:#E11D48;
     color:white;
     border:none;
     border-radius:10px;
+    font-weight:600;
 }
 
 section[data-testid="stSidebar"] .stButton > button:hover{
-    background:#16A34A;
+    background:#FB7185;
+}
+
+/* -----------------------------
+Main Buttons
+------------------------------*/
+
+.stButton > button{
+    background:#E11D48;
+    color:white;
+    border:none;
+    border-radius:10px;
+    transition:0.3s;
+}
+
+.stButton > button:hover{
+    background:#FB7185;
+}
+
+/* -----------------------------
+Progress Bar
+------------------------------*/
+
+.stProgress > div > div > div > div{
+    background:#E11D48;
+}
+
+/* -----------------------------
+Headers
+------------------------------*/
+
+h1,h2,h3{
+    color:white;
+}
+
+/* -----------------------------
+Divider
+------------------------------*/
+
+hr{
+    border-color:#334155;
 }
 
 </style>
 """, unsafe_allow_html=True)
 
-st.markdown("""
-<style>
-
-div[data-testid="metric-container"]{
-    background:#1E293B;
-    border:1px solid #334155;
-    padding:18px;
-    border-radius:16px;
-    transition:0.3s;
-}
-
-div[data-testid="metric-container"]:hover{
-    transform:translateY(-4px);
-    border:1px solid #22C55E;
-    box-shadow:0 8px 20px rgba(34,197,94,0.25);
-}
-
-section[data-testid="stSidebar"]{
-    background:#111827;
-}
-
-section[data-testid="stSidebar"] .stButton > button{
-    background:#22C55E;
-    color:white;
-    border:none;
-    border-radius:10px;
-}
-
-section[data-testid="stSidebar"] .stButton > button:hover{
-    background:#16A34A;
-}
-
-</style>
-""", unsafe_allow_html=True)
 st.markdown("""
 <div style="margin-bottom:35px;">
 
 <h1 style="
-color:white;
 font-size:42px;
 font-weight:700;
+color:white;
 margin-bottom:6px;
 ">
 Personal Finance Dashboard
 </h1>
 
 <p style="
-color:#94A3B8;
 font-size:18px;
+color:#94A3B8;
 margin-top:0;
 ">
 Manage your expenses, budget and savings in one place.
