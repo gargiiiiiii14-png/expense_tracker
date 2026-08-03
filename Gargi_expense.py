@@ -543,40 +543,40 @@ if st.session_state.expense.empty:
 
 else:
 
-   styled_df = (
-    st.session_state.expense.style
-    .set_table_styles([
-        {
-            "selector": "th",
-            "props": [
-                ("background-color", "#1E293B"),
-                ("color", "white"),
-                ("font-weight", "bold"),
-                ("text-align", "center"),
-            ]
-        },
-        {
-            "selector": "td",
-            "props": [
-                ("text-align", "center"),
-                ("padding", "10px"),
-            ]
-        }
-    ])
-    .apply(
-    lambda row: [
-        "background-color: #3B1F2B" if row.name % 2 == 0
-        else "background-color: #4A2636"
-    ] * len(row),
-    axis=1
-)
-)
+    styled_df = (
+        st.session_state.expense.style
+        .set_table_styles([
+            {
+                "selector": "th",
+                "props": [
+                    ("background-color", "#1E293B"),
+                    ("color", "white"),
+                    ("font-weight", "bold"),
+                    ("text-align", "center"),
+                ]
+            },
+            {
+                "selector": "td",
+                "props": [
+                    ("text-align", "center"),
+                    ("padding", "10px"),
+                ]
+            }
+        ])
+        .apply(
+            lambda row: [
+                "background-color: #3B1F2B" if row.name % 2 == 0
+                else "background-color: #4A2636"
+            ] * len(row),
+            axis=1
+        )
+    )
 
-st.dataframe(
-    styled_df,
-    use_container_width=True,
-    hide_index=True
-)
+    st.dataframe(
+        styled_df,
+        use_container_width=True,
+        hide_index=True
+    )
 # ---------------------------------------------------
 # EXPENSE ANALYTICS
 # ---------------------------------------------------
