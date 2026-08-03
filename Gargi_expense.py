@@ -108,75 +108,24 @@ section[data-testid="stSidebar"] .stButton > button:hover{
 </style>
 """, unsafe_allow_html=True)
 st.markdown("""
-<div style="
-background:linear-gradient(90deg,#0F172A,#1E293B);
-padding:35px;
-border-radius:18px;
-border-left:6px solid #22C55E;
-margin-bottom:30px;
-text-align:center;
-">
+<div style="margin-bottom:35px;">
 
 <h1 style="
 color:white;
 font-size:42px;
-margin-bottom:8px;
+font-weight:700;
+margin-bottom:6px;
 ">
-💰 Personal Expense Tracker
+Personal Finance Dashboard
 </h1>
 
 <p style="
-color:#CBD5E1;
+color:#94A3B8;
 font-size:18px;
-margin-bottom:25px;
+margin-top:0;
 ">
-Track • Analyze • Save Smarter
+Manage your expenses, budget and savings in one place.
 </p>
-
-<div style="
-display:flex;
-justify-content:center;
-gap:12px;
-flex-wrap:wrap;
-">
-
-<span style="
-background:#334155;
-padding:10px 18px;
-border-radius:30px;
-color:white;
-">
-📊 Analytics
-</span>
-
-<span style="
-background:#334155;
-padding:10px 18px;
-border-radius:30px;
-color:white;
-">
-💵 Budget
-</span>
-
-<span style="
-background:#334155;
-padding:10px 18px;
-border-radius:30px;
-color:white;
-">
-📈 Insights
-</span>
-
-<span style="
-background:#334155;
-padding:10px 18px;
-border-radius:30px;
-color:white;
-">
-📂 CSV Support
-</span>
-
-</div>
 
 </div>
 """, unsafe_allow_html=True)
